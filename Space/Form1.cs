@@ -56,6 +56,7 @@ namespace Space
             {
                 Right.Enabled = true;
             }
+            e.SuppressKeyPress = true;
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -266,8 +267,8 @@ namespace Space
 
         public void Interaction(PictureBox player, PictureBox obj)
         {
-            double dist = GetDistance(player.Location.X, player.Location.Y, obj.Location.X, obj.Location.Y);
-            if (dist <= 170)
+            double dist = GetDistance(player.Location.X + player.Width / 2, player.Location.Y + player.Height / 2, obj.Location.X + obj.Width / 2, obj.Location.Y + obj.Height / 2);
+            if (dist <= 150)
                 button1.Enabled = true;
             else
                 button1.Enabled = false;
@@ -285,6 +286,11 @@ namespace Space
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Questions form = new Questions();
+            form.ShowDialog();
+           
+            button1.Enabled = false;
+            
 
         }
     }
